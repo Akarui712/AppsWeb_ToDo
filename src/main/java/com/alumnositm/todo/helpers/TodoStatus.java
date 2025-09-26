@@ -1,6 +1,7 @@
 package com.alumnositm.todo.helpers;
 
-public enum TodoStatus {
+public enum TodoStatus 
+{
     PENDING,
     COMPLETED,
     IN_PROGRESS,

@@ -1,1 +1,34 @@
 GET http://localhost:8080/api/v1/todos HTTP/1.1
+
+### 
+POST http://localhost:8080/api/v1/todos HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "New Todo", 
+  "description": "Description of the new todo"
+}
+
+// id = 3
+###
+GET http://localhost:8080/api/v1/todos/3 HTTP/1.1
+
+###
+PUT http://localhost:8080/api/v1/todos/update/3 HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "New Todo", 
+  "description": "Nuevo mensaje de Fer"
+}
+
+###
+//Query param --> busca todos los que tengan titulo "New"
+GET http://localhost:8080/api/v1/todos/search?q=New HTTP/1.1
+
+###
+//Inyección SQL, devuelve todos los valores de la base de datos, volviendola vulnerable a un ataque
+GET http://localhost:8080/api/v1/todos/search?q=N%25'%20OR%20'1'%3D'1%20--%20 HTTP/1.1
+
+###
+DELETE http://localhost:8080/api/v1/todos/delete/1 HTTP/1.1
