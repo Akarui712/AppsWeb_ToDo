@@ -6,12 +6,10 @@ import com.alumnositm.todo.entities.TodoEntity;
 public interface TodoServices 
 {
     List<TodoEntity> allTodos();
-
     TodoEntity createTodo(CreateTodoRequest createTodoRequest);
     TodoEntity findById(int idTodo);
     TodoEntity updateTodoById(int idTodo, CreateTodoRequest entity);
-
     List<TodoEntity> findTodosByTitle(String queyParam);
-
     String deleteById(int idTodo);
+    boolean eliminacionVirtualPorId(int idTodo);
 }

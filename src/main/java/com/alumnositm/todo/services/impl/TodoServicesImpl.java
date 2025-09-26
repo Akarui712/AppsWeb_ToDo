@@ -1,5 +1,7 @@
 package com.alumnositm.todo.services.impl;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
@@ -62,6 +64,7 @@ public class TodoServicesImpl implements TodoServices
         return null;
     }
 
+    //Eliminar por id
     @Override
     public String deleteById(int idTodo)
     {
@@ -72,6 +75,21 @@ public class TodoServicesImpl implements TodoServices
             return "Eliminado";
         }
         return "No existe el id";
+    }
+
+    //Eliminación virtual por id
+    @Override
+    public boolean eliminacionVirtualPorId(int idTodo)
+    {
+        Optional<TodoEntity> optionalTodo = todoRepository.findById((long) idTodo);
+        if (optionalTodo.isPresent()) 
+        {
+            TodoEntity todo = optionalTodo.get();
+            todo.setStatus(TodoStatus.ELIMINADO);
+            todoRepository.save(todo);
+            return true;
+        }
+        return false;
     }
 
     @Override

@@ -82,6 +82,18 @@ public class TodoController
         }
         return ResponseEntity.notFound().build();
     }
+
+    //Investigar eliminar por id virtualmente
+    @DeleteMapping("delete/{idTodo}")
+    public ResponseEntity<String> deleteTodoByIdVirtual(@PathVariable int idTodo) 
+    {
+        boolean eliminado = todoServices.eliminacionVirtualPorId(idTodo);
+        if (eliminado) 
+        {
+            return ResponseEntity.ok("Eliminación virtual exitosa");
+        }
+        return ResponseEntity.notFound().build();
+    }
     
     @GetMapping("search")
     public ResponseEntity<List<TodoEntity>>
