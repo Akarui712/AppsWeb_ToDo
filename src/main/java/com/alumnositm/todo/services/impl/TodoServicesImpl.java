@@ -79,7 +79,7 @@ public class TodoServicesImpl implements TodoServices
 
     //Eliminación virtual por id
     @Override
-    public boolean eliminacionVirtualPorId(int idTodo)
+    public boolean deleteByIdVirtual(int idTodo)
     {
         Optional<TodoEntity> optionalTodo = todoRepository.findById((long) idTodo);
         if (optionalTodo.isPresent()) 

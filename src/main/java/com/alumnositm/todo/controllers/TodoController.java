@@ -84,10 +84,10 @@ public class TodoController
     }
 
     //Investigar eliminar por id virtualmente
-    @DeleteMapping("delete/{idTodo}")
+    @RequestMapping("status/{idTodo}")
     public ResponseEntity<String> deleteTodoByIdVirtual(@PathVariable int idTodo) 
     {
-        boolean eliminado = todoServices.eliminacionVirtualPorId(idTodo);
+        boolean eliminado = todoServices.deleteByIdVirtual(idTodo);
         if (eliminado) 
         {
             return ResponseEntity.ok("Eliminación virtual exitosa");
