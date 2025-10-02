@@ -1,7 +1,7 @@
 package com.alumnositm.todo.services.impl;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
@@ -27,8 +27,13 @@ public class TodoServicesImpl implements TodoServices
     public List<TodoEntity> allTodos() 
     {
         List<TodoEntity> todos = todoRepository.findAll();
+        List<TodoEntity> todosExit=new ArrayList<>();
+        for (TodoEntity todoEntity : todos) {
+            if(todoEntity.getStatus().toString()!="ELIMINADO")
+            todosExit.add(todoEntity);
+        }
         //Query name --> interpreta a que tabla de una BD se van a hacer las consultas
-        return todos;
+        return todosExit;
     }
 
     @Override
