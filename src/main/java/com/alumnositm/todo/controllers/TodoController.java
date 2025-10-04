@@ -96,10 +96,11 @@ public class TodoController
     }
     
     @GetMapping("search")
-    public ResponseEntity<List<TodoEntity>>
-    findTodosByTitle(@RequestParam("q")String queryParam)
+    public ResponseEntity<List<TodoEntity>> findTodosByTitle(@RequestParam("q") String queryParam)
     {
         List<TodoEntity> todos = todoServices.findTodosByTitle(queryParam);
         return ResponseEntity.ok(todos);
     }
+
+
 }
